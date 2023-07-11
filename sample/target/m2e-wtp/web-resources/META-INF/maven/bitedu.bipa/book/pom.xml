@@ -114,6 +114,13 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>8.0.28</version>
 		</dependency>
+		
+		<!-- spring에서 jdbc를 사용하기 위해서는 jar 파일이 필요하기 때문에 DI를 해준다 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 	
 		<!-- Test -->
 		<dependency>

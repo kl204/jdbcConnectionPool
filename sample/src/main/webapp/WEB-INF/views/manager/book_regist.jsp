@@ -41,13 +41,31 @@
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function(){
-		$('#go_book_regist').on('click',function(){
-			$('#frm').attr('action','regist.do');
-			
-			$('#frm').submit();
+	$(document).ready(function() {
+		  $('#go_book_regist').on('click', function(event) {
+		    event.preventDefault(); // submit 이벤트 중단
+
+		    var isbn = $('#isbn').val();
+		    var title = $('#book_title').val();
+		    var author = $('#author').val();
+		    var publishDate = $('#publish_date').val();
+
+		    if (!isbn || !title || !author || !publishDate) {
+		      alert('입력되지 않은 필드가 있습니다!');
+		      return;
+		    }
+
+		    var timestampRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
+		    if (!timestampRegex.test(publishDate)) {
+		      alert('출판일 형식이 올바르지 않습니다! (예: 2023-07-11 14:30:00)');
+		      return;
+		    }
+
+		    $('#frm').attr('action', 'regist.do');
+		    $('#frm').unbind('submit').submit(); // submit 이벤트 다시 트리거
+		  });
 		});
-	});
+
 	
 	$(document).ready(function(){
 		$('#go_book_list').on('click',function(){

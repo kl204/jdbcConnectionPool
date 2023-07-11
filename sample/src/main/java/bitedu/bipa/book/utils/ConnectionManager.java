@@ -42,7 +42,7 @@ public class ConnectionManager {
 	}
 	public Connection getConnectionOld() {
 		Connection con = null;
-		String jdbcURL = "jdbc:mysql://localhost:3306/bitedu";
+		String jdbcURL = "jdbc:mysql://localhost:3306/test";
 		String driver = "com.mysql.cj.jdbc.Driver";
 		String id = "root";
 		String pwd = "1234";
